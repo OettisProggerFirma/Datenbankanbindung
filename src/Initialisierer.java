@@ -19,13 +19,15 @@ public class Initialisierer {
         String user = "postgres";
         String pass = "password";
         String fileName = "";
-        for (String befehl : Initialisierer.readSQLFile("./Unterlagen/wetter-db/wetterdaten_tabellen.sql")) {
-            System.out.println(befehl);
-        }
+//        for (String befehl : Initialisierer.readSQLFile("./Unterlagen/wetter-db/wetterdaten_tabellen.sql")) {
+//            System.out.println(befehl);
+//        }
 //        Initialisierer.readSQLFile();
 
         try (Connection con = DriverManager.getConnection(url, user, pass); Statement st = con.createStatement()) {
-
+            for (String sql : Initialisierer.readSQLFile("./Unterlagen/wetter-db/wetterdaten_tabellen.sql")) {
+                st.executeUpdate(sql);
+            }
         } catch (SQLException e) {
             System.out.println("Fehler: " + e.getLocalizedMessage() + " (" + e.getSQLState() + ")");
         }
