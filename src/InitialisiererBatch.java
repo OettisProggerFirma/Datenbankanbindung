@@ -24,7 +24,7 @@ public class InitialisiererBatch {
                 st.addBatch(sql);
             }
             st.executeBatch();
-            
+
         } catch (SQLException e) {
             System.out.println("Fehler: " + e.getLocalizedMessage() + " (" + e.getSQLState() + ")");
         }
